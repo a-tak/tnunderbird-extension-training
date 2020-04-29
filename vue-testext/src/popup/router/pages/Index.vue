@@ -1,8 +1,8 @@
 <template>
-  <p>Hello world!</p>
+  <p>Hello world! TypeScript!!あいー</p>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   data() {
     return {};

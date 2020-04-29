@@ -10,19 +10,31 @@ const config = {
   mode: process.env.NODE_ENV,
   context: __dirname + '/src',
   entry: {
-    background: './background.js',
-    'popup/popup': './popup/popup.js',
-    'options/options': './options/options.js',
+    background: './background.ts',
+    'popup/popup': './popup/popup.ts',
+    'options/options': './options/options.ts',
   },
   output: {
     path: __dirname + '/dist',
-    filename: '[name].js',
+    filename: '[name].ts',
   },
   resolve: {
-    extensions: ['.js', '.vue'],
+    extensions: ['.js', '.ts', '.vue'],
   },
   module: {
     rules: [
+      {
+        test:  /\.ts$/,
+        // TypeScript をコンパイルする
+        use: [
+          {
+            loader: "ts-loader",
+            options: {
+              appendTsSuffixTo: [/\.vue$/]
+            }
+          }
+        ]
+      },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
